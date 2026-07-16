@@ -1,4 +1,9 @@
 from langchain_huggingface import ChatHuggingFace, HuggingFacePipeline
+import os
+
+
+# os.environ['hf_home'] = "D:/huggingface_cache"  # Set the Hugging Face cache directory
+
 
 
 llm = HuggingFacePipeline.from_model_id(    
