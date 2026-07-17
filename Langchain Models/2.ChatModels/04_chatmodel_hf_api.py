@@ -4,16 +4,15 @@ import os
 
 load_dotenv()
 
-# Get the Hugging Face API token
+# # Get the Hugging Face API token
 huggingface_api_token = os.getenv("HUGGINGFACEHUB_ACCESS_TOKEN")
 
 # Correct way: pass parameters directly
 llm = HuggingFaceEndpoint(
     repo_id="TinyLlama/TinyLlama-1.1B-Chat-v1.0",
     task="text-generation",
-    huggingfacehub_api_token=huggingface_api_token,
-    temperature=0.5,           
-    max_new_tokens=500         
+    huggingfacehub_api_token=huggingface_api_token          
+         
 )
 
 model = ChatHuggingFace(llm=llm)

@@ -4,7 +4,12 @@ from sklearn.metrics.pairwise import cosine_similarity
 import numpy as np
 import os
 
+
 load_dotenv()
+
+
+
+
 
 # openai_api_key = os.getenv("OPENAI_API_KEY")
 # if not openai_api_key or not openai_api_key.startswith("sk-") or openai_api_key.startswith("sk-proj-"):

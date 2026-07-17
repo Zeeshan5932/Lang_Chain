@@ -1,3 +1,10 @@
+
+langchain-google-genai
+python-dotenv
+
+
+
+
 # LangChain Core
 langchain
 langchain-core
@@ -10,7 +17,7 @@ openai
 langchain-anthropic
 
 # Google Gemini (PaLM) Integration
-langchain-google-genai
+
 google-generativeai
 
 # Hugging Face Integration
