@@ -1,3 +1,5 @@
+from urllib import response
+
 from langchain_google_genai import GoogleGenerativeAI
 import streamlit as st
 from dotenv import load_dotenv
@@ -45,7 +47,7 @@ template = PromptTemplate(
        
     2. Analogies and Examples
          - Provide analogies and examples to clarify complex concepts.
-         if the paper includes case studies or practical applications, summarize them as well.
+         - If the paper includes case studies or practical applications, summarize them as well.
     
     """,
     
@@ -60,10 +62,11 @@ prompt = template.invoke({
     'length_input': length_input
 })
 
-# user_input = st.text_area("Enter your prompt:")
+# user_input = st.text_input("Enter your prompt:")
 
 if st.button("Summarize"):
-    response = model.invoke(prompt)
+    result = model.invoke(prompt)
     
-    print(response.content)  # Print the response to the console for debugging
-    st.write("Generating summary...")
+    # print(result)  # Print the response to the console for debugging
+    # st.write(result.content)  # Display the response in the Streamlit app
+    st.write(result)  # Display the response in the Streamlit app
