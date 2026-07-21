@@ -51,7 +51,7 @@ template = PromptTemplate(
     
     """,
     
-    input_variables=["paper_input", "style_input", "length_input"]
+    input_variables=["paper_input", "style_input", "length_input"],validate_template=True
     )
 
 
