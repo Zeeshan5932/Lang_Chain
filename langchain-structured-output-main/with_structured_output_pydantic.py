@@ -2,10 +2,12 @@ from langchain_openai import ChatOpenAI
 from dotenv import load_dotenv
 from typing import TypedDict, Annotated, Optional, Literal
 from pydantic import BaseModel, Field
+from langchain_google_genai import GoogleGenerativeAI,ChatGoogleGenerativeAI
+
 
 load_dotenv()
 
-model = ChatOpenAI()
+model = ChatGoogleGenerativeAI(model="gemini-3.5-flash")
 
 # schema
 class Review(BaseModel):

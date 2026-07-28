@@ -1,10 +1,10 @@
-from langchain_openai import ChatOpenAI
+from langchain_google_genai import GoogleGenerativeAI,ChatGoogleGenerativeAI
 from dotenv import load_dotenv
 from typing import TypedDict, Annotated, Optional, Literal
 
 load_dotenv()
 
-model = ChatOpenAI()
+model = ChatGoogleGenerativeAI(model="gemini-3.5-flash")
 
 # schema
 class Review(TypedDict):
@@ -19,19 +19,32 @@ class Review(TypedDict):
 
 structured_model = model.with_structured_output(Review)
 
-result = structured_model.invoke("""I recently upgraded to the Samsung Galaxy S24 Ultra, and I must say, it’s an absolute powerhouse! The Snapdragon 8 Gen 3 processor makes everything lightning fast—whether I’m gaming, multitasking, or editing photos. The 5000mAh battery easily lasts a full day even with heavy use, and the 45W fast charging is a lifesaver.
+result = structured_model.invoke("""Homemade Chicken Biryani Review
 
-The S-Pen integration is a great touch for note-taking and quick sketches, though I don't use it often. What really blew me away is the 200MP camera—the night mode is stunning, capturing crisp, vibrant images even in low light. Zooming up to 100x actually works well for distant objects, but anything beyond 30x loses quality.
+I recently tried a homemade chicken biryani from a local family-owned restaurant, and it exceeded my expectations. The rice was perfectly cooked, with each grain remaining separate and full of flavor. The chicken was tender, juicy, and well-marinated, blending beautifully with the aromatic spices.
 
-However, the weight and size make it a bit uncomfortable for one-handed use. Also, Samsung’s One UI still comes with bloatware—why do I need five different Samsung apps for things Google already provides? The $1,300 price tag is also a hard pill to swallow.
+What impressed me the most was the balance of flavors. It wasn't overly spicy, allowing the rich taste of the herbs and traditional spices to stand out. The serving also came with fresh raita and a tangy salad, which complemented the biryani perfectly and made the meal even more enjoyable.
+
+The portion size was generous and easily enough for one hungry person. The food arrived hot, well-packaged, and fresh, which made the overall experience even better.
+
+The only downside was that it had slightly more oil than I prefer, and I would have liked a larger serving of raita. Other than that, it was an excellent meal that I'd happily order again.
 
 Pros:
-Insanely powerful processor (great for gaming and productivity)
-Stunning 200MP camera with incredible zoom capabilities
-Long battery life with fast charging
-S-Pen support is unique and useful
-                     
-Review by Nitish Singh
-""")
 
-print(result['name'])
+* Rich, authentic flavor with perfectly balanced spices
+* Tender and flavorful chicken
+* Generous portion size
+* Fresh ingredients and excellent packaging
+
+Cons:
+
+* Slightly oily
+* Raita portion could be larger
+
+Overall, this chicken biryani delivered an authentic, satisfying experience. If you're a fan of flavorful rice dishes with well-seasoned chicken, this is definitely worth trying.
+
+Review by Zeeshan
+
+""")
+print(result)
+print(result['summary'])

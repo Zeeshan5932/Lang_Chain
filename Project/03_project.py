@@ -28,7 +28,7 @@ if st.button("Get Recipe"):
         response = llm.invoke(messages)
 
         st.write("### AI Response")
-        st.write(response.content)
+        st.write(response)
 
     else:
         st.warning("Please enter your question.")
