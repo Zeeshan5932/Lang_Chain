@@ -1,3 +1,4 @@
+from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_huggingface import ChatHuggingFace, HuggingFaceEndpoint
 from dotenv import load_dotenv
 from langchain_core.prompts import PromptTemplate
@@ -5,13 +6,18 @@ from langchain_core.output_parsers import JsonOutputParser
 
 load_dotenv()
 
-# Define the model
-llm = HuggingFaceEndpoint(
-    repo_id="google/gemma-2-2b-it",
-    task="text-generation"
-)
+# # Define the model
+# llm = HuggingFaceEndpoint(
+#     repo_id="google/gemma-2-2b-it",
+#     task="text-generation"
+# )
 
-model = ChatHuggingFace(llm=llm)
+# model = ChatHuggingFace(llm=llm)
+
+model = ChatGoogleGenerativeAI(
+    model="gemini-3.5-flash",
+    temperature=0
+)
 
 parser = JsonOutputParser()
 
@@ -22,6 +28,8 @@ template = PromptTemplate(
 )
 
 chain = template | model | parser
+
+# prompt = template.format()
 
 result = chain.invoke({'topic':'black hole'})
 

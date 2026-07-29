@@ -1,17 +1,25 @@
+from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_huggingface import ChatHuggingFace, HuggingFaceEndpoint
 from dotenv import load_dotenv
 from langchain_core.prompts import PromptTemplate
-from langchain.output_parsers import StructuredOutputParser, ResponseSchema
+from langchain_classic.output_parsers.structured import (
+    StructuredOutputParser, ResponseSchema
+)
 
 load_dotenv()
 
-# Define the model
-llm = HuggingFaceEndpoint(
-    repo_id="google/gemma-2-2b-it",
-    task="text-generation"
-)
+# # Define the model
+# llm = HuggingFaceEndpoint(
+#     repo_id="google/gemma-2-2b-it",
+#     task="text-generation"
+# )
 
-model = ChatHuggingFace(llm=llm)
+# model = ChatHuggingFace(llm=llm)
+
+model = ChatGoogleGenerativeAI(
+    model="gemini-3.5-flash",
+    temperature=0
+)
 
 schema = [
     ResponseSchema(name='fact_1', description='Fact 1 about the topic'),
@@ -27,8 +35,16 @@ template = PromptTemplate(
     partial_variables={'format_instruction':parser.get_format_instructions()}
 )
 
-chain = template | model | parser
+# chain = template | model | parser
 
-result = chain.invoke({'topic':'black hole'})
+# result = chain.invoke({'topic':'black hole'})
 
-print(result)
+# print(result)
+
+
+prompt = template.invoke({'topic':'Laptop'})
+result = model.invoke(prompt)
+
+final_result = parser.parse(result.content)
+
+print(final_result)
