@@ -9,5 +9,5 @@ model = GoogleGenerativeAI(
     model="gemini-3.5-flash"
 )
 
-response = model.invoke("what is the capital of india?")
+response = model.invoke("what is the capital of Balochistan?")
 print(response)  # Ab yeh properly "Islamabad" print karega!
