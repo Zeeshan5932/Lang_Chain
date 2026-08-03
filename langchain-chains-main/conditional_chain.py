@@ -1,16 +1,18 @@
 from langchain_openai import ChatOpenAI
 from langchain_anthropic import ChatAnthropic
+
+from langchain_google_genai import GoogleGenerativeAI
 from dotenv import load_dotenv
 from langchain_core.prompts import PromptTemplate
 from langchain_core.output_parsers import StrOutputParser
-from langchain.schema.runnable import RunnableParallel, RunnableBranch, RunnableLambda
+from langchain_core.runnables import RunnableParallel, RunnableBranch, RunnableLambda
 from langchain_core.output_parsers import PydanticOutputParser
 from pydantic import BaseModel, Field
 from typing import Literal
 
 load_dotenv()
 
-model = ChatOpenAI()
+model = GoogleGenerativeAI(model="gemini-3.5-flash")
 
 parser = StrOutputParser()
 
@@ -41,11 +43,12 @@ prompt3 = PromptTemplate(
 branch_chain = RunnableBranch(
     (lambda x:x.sentiment == 'positive', prompt2 | model | parser),
     (lambda x:x.sentiment == 'negative', prompt3 | model | parser),
+    (lambda x:x.sentiment == 'neutral', prompt3 | model | parser),
     RunnableLambda(lambda x: "could not find sentiment")
 )
 
 chain = classifier_chain | branch_chain
 
-print(chain.invoke({'feedback': 'This is a beautiful phone'}))
+print(chain.invoke({'feedback': 'This is a average phone'}))
 
 chain.get_graph().print_ascii()
