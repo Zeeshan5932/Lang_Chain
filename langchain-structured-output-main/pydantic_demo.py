@@ -25,8 +25,8 @@ from pydantic import BaseModel
 
 class Student(BaseModel):
     name:str
-    age = int
-new_student = {'name':"zeeshan", 'age': "19"  }
+    age : int
+new_student = {'name':"zeeshan", 'age': 19  }
 # student = Student(**new_student)
 print(new_student)
 # print(type(new_student))
