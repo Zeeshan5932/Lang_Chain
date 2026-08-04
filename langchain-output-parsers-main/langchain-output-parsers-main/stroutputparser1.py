@@ -37,7 +37,7 @@ chain = template1 | model | parser | template2 | model | parser
 
 result = chain.invoke({'topic':'black hole'})
 
-prompt = template1.invoke({'topic':'black hole'})
+# prompt = template1.invoke({'topic':'black hole'})
 
 print(result)
-print(prompt)
+# print(prompt)
