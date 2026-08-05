@@ -1,8 +1,9 @@
 from langchain_openai import ChatOpenAI
+from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.prompts import PromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 from dotenv import load_dotenv
-from langchain.schema.runnable import RunnableSequence
+from langchain_core.runnables import RunnableSequence
 
 load_dotenv()
 
@@ -11,7 +12,7 @@ prompt1 = PromptTemplate(
     input_variables=['topic']
 )
 
-model = ChatOpenAI()
+model = ChatGoogleGenerativeAI(model="gemini-3.5-flash", temperature=0)
 
 parser = StrOutputParser()
 
