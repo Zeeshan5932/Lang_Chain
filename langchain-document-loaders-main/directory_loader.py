@@ -6,7 +6,13 @@ loader = DirectoryLoader(
     loader_cls=PyPDFLoader
 )
 
-docs = loader.lazy_load()
+# docs = loader.lazy_load()
+
+docs = loader.load()
+
+
+print(docs[0].page_content) 
+print(docs[0].metadata)# Print the first 100 characters of the first document
 
 for document in docs:
     # print(document.metadata)

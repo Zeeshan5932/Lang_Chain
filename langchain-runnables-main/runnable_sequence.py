@@ -1,4 +1,4 @@
-from langchain_openai import ChatOpenAI
+
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.prompts import PromptTemplate
 from langchain_core.output_parsers import StrOutputParser
@@ -22,5 +22,5 @@ prompt2 = PromptTemplate(
 )
 
 chain = RunnableSequence(prompt1, model, parser, prompt2, model, parser)
-
+# chains = prompt1 | model | parser | prompt2 | model | parser
 print(chain.invoke({'topic':'AI'}))
