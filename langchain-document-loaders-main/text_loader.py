@@ -84,7 +84,7 @@ load_dotenv()
 
 # Model name fixed to gemini-1.5-flash
 model = ChatGoogleGenerativeAI(
-    model="gemini-1.5-flash", 
+    model="gemini-3.5-flash", 
     temperature=0,
     max_retries=3
 )
