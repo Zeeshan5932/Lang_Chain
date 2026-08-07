@@ -1,13 +1,13 @@
-from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_openai import ChatOpenAI
 from dotenv import load_dotenv
 
 
 
-load_dotenv()
+# load_dotenv()
 
 
-llm = ChatOpenAI()
+# llm = ChatOpenAI()
 
 
 
@@ -27,18 +27,18 @@ splitter = RecursiveCharacterTextSplitter(
 chunks = splitter.split_text(text)
 
 
-# process each chunks with openai 
-for idx, chunk in enumerate(chunks):
-    print(f"--- Processing Chunk {idx + 1} ---")
-    print(f"Chunk text:\n{chunk}\n")
+# # process each chunks with openai 
+# for idx, chunk in enumerate(chunks):
+#     print(f"--- Processing Chunk {idx + 1} ---")
+#     print(f"Chunk text:\n{chunk}\n")
 
-    # Pass the chunk to the OpenAI model
-    response = llm(chunk)
+#     # Pass the chunk to the OpenAI model
+#     response = llm(chunk)
 
-    # Output the model's response for each chunk
-    print(f"OpenAI Model Response:\n{response}\n")
+#     # Output the model's response for each chunk
+#     print(f"OpenAI Model Response:\n{response}\n")
 
 
 
-# print(len(chunks))
-# print(chunks)
+print(len(chunks))
+print(chunks)
