@@ -6,21 +6,13 @@ from langchain_text_splitters import CharacterTextSplitter
 # docs = loader.load()
 
 text = """
-        2. 💰 "Aloo Ko 1 Crore Mil Gaye"
+        Artificial Intelligence is transforming many industries around the world. Companies are using AI for customer support, document analysis, automation, and data processing. In customer support, AI can understand user questions and provide quick answers. However, AI applications often need access to company documents and internal information. For example, a company may have an employee handbook containing information about salaries, holidays, leave policies, and company rules. Instead of sending the complete handbook to the AI every time, we can divide the document into smaller meaningful chunks. These chunks can then be stored and searched when an employee asks a question.
 
-Hook:
-Bank Manager:
-"Congratulations! Aapke account me 1 crore transfer hue hain."
-
-Curiosity:
-Sab sochte hain kisne bheje?
-
-Twist:
-Galti se kisi ne "Aloo Mattar Gobi Restaurant" ki payment iske account me bhej di."""
+"""
 
 splitter = CharacterTextSplitter(
-    chunk_size=200,
-    chunk_overlap=0,
+    chunk_size=100,
+    chunk_overlap=20,
     separator=''
 )
 
