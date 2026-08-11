@@ -31,12 +31,12 @@ A simple Python-based project to manage and track student data, including their 
 # Initialize the splitter
 splitter = RecursiveCharacterTextSplitter.from_language(
     language=Language.MARKDOWN,
-    chunk_size=400,
-    chunk_overlap=0,
+    chunk_size=200,
+    chunk_overlap=2,
 )
 
 # Perform the split
 chunks = splitter.split_text(text)
 
 print(len(chunks))
-print(chunks[0])
+print(chunks)
